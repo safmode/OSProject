@@ -25,7 +25,7 @@ Team Mates:
 ***Questions:***
 
 1. What is the link of the fork OSProject in your repository. ***(1 mark)*** __https://github.com/safmode/OSProject__.
-2. How many files and folders are in this repository. ***(1 mark)*** __There are two files which are the README.md and images files__.
+2. How many files and folders are in this repository. ***(1 mark)*** __There are one file which is the README.md and one folder named images__.
 
 
 ## Exploring github codespaces
@@ -399,7 +399,7 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
 
 1. At the terminal, run a linux instance. By typing the following command. 
 ```
-docker pull debian
+docker pull debian 
 docker run --detach -it debian
 ```
 2. This will run the debian container. To check if the debian container is running, type
