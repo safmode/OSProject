@@ -493,6 +493,7 @@ At the terminal, create a new directory called **myroot**, and run a instance of
     ```
 
     **__The answer:__**
+    <br /> __Yes, I can change the permission of the file, which is helloworld.txt to user codespace__.
 
      ```bash
         @safmode ➜ /workspaces/OSProject/myroot (main) $ cd
