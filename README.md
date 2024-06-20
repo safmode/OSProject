@@ -453,10 +453,10 @@ f65be1987f84   debian    "bash"    19 minutes ago   Exited (137) 18 seconds ago 
 
 ***Questions:***
 
-1. Are files in the container persistent. Why not?. ***(1 mark)*** 
+1. Are files in the container persistent. Why not? ***(1 mark)*** 
 <br /> __No, the files in the container are not persistent. This is because containers are designed to be temporary and easily disposaable. When a container is deleted, the filesystem and any files inside the container are also deleted__.
 
-2. Can we run two, or three instances of debian linux? . ***(1 mark)*** 
+2. Can we run two, or three instances of debian linux? ***(1 mark)*** 
 <br /> __Yes, because each container acts like a separate debian linux system, allowing running multiple instances at once__.
 
 ## Running your own container with persistent storage
@@ -476,14 +476,36 @@ At the terminal, create a new directory called **myroot**, and run a instance of
 
 ***Questions:***
 
-1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** __Fill answer here__.
-2. Can you change the permission of the files to user codespace.  You will need this to be able to commit and get points for this question. ***(2 mark)***
-```bash
-//use sudo and chown
-sudo chown -R codespace:codespace myroot
+1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)***
+    ```bash
+    @safmode ➜ /workspaces/OSProject/myroot (main) $ ls -l
+    total 4
+    -rw-rw-rw- 1 root root 61 Jun 20 15:17 helloworld.txt
+    ```
+    1. __User: root__.
+    2. __Group: root__.
 
-```
-*** __Fill answer here__.***
+2. Can you change the permission of the files to user codespace.  You will need this to be able to commit and get points for this question. ***(2 mark)***
+    ```bash
+    //use sudo and chown
+    sudo chown -R codespace:codespace myroot
+
+    ```
+
+    **__The answer:__**
+
+     ```bash
+        @safmode ➜ /workspaces/OSProject/myroot (main) $ cd
+        @safmode ➜ ~ $ cd /workspaces/OSProject
+        @safmode ➜ /workspaces/OSProject (main) $ sudo chown -R codespace:codespace myroot
+        @safmode ➜ /workspaces/OSProject (main) $ cd /workspaces/OSProject/myroot
+        @safmode ➜ /workspaces/OSProject/myroot (main) $ ls -ld
+        drwxrwxrwx+ 3 codespace codespace 4096 Jun 20 15:17 
+        @safmode ➜ /workspaces/OSProject/myroot (main) $ ls -l
+        total 4
+        -rw-rw-rw- 1 codespace codespace 61 Jun 20 15:17 helloworld.txt
+    ``` 
+
 
 ## You are on your own, create your own static webpage
 
