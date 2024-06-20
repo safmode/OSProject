@@ -25,7 +25,7 @@ Team Mates:
 ***Questions:***
 
 1. What is the link of the fork OSProject in your repository. ***(1 mark)*** __https://github.com/safmode/OSProject__.
-2. How many files and folders are in this repository. ***(1 mark)*** __There are two files which are the README.md and images files__.
+2. How many files and folders are in this repository. ***(1 mark)*** __There are one file which is the README.md and one folder named images__.
 
 
 ## Exploring github codespaces
