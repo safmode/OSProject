@@ -1,11 +1,11 @@
 # OSProject Running Containers for Application Development
 
-Group Name: __Fill your team name__. 
+Group Name: __OS-Some__. 
 
-Section: __Fill your class section__. 
+Section: __Section 4__. 
 
 Team Mates:
-1. __Fill name__ and __matric no__
+1. __Nur Safiah Ashiqin binti Shuhanizal__ and __2317618__
 2. __Fill name__ and __matric no__
 3. __Fill name__ and __matric no__
 
