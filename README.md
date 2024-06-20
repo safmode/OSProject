@@ -330,18 +330,42 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
 9. Run the command **top** and type **q** to quit. ***(1 mark)***
 
     ```
-    top - 12:45:41 up  1:10,  0 users,  load average: 0.24, 0.23, 0.22
-    Tasks:  30 total,   1 running,  29 sleeping,   0 stopped,   0 zombie
-    top - 12:47:10 up  1:12,  0 users,  load average: 0.76, 0.35, 0.26
+    top - 12:54:12 up  1:19,  0 users,  load average: 0.24, 0.24, 0.23
     Tasks:  29 total,   1 running,  28 sleeping,   0 stopped,   0 zombie
-    %Cpu(s):  3.9 us,  4.5 sy,  0.0 ni, 91.3 id,  0.3 wa,  0.0 hi,  0.0 si,  0.0 st
-    MiB Mem :   7929.6 total,    463.5 free,   2034.7 used,   5431.3 buff/cache
-    MiB Swap:      0.0 total,      0.0 free,      0.0 used.   5511.1 avail Mem 
+    %Cpu(s): 14.3 us,  3.6 sy,  0.0 ni, 82.1 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+    MiB Mem :   7929.6 total,    452.3 free,   2033.9 used,   5443.4 buff/cache
+    MiB Swap:      0.0 total,      0.0 free,      0.0 used.   5511.9 avail Mem 
 
-        PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                                                     
-      10071 codespa+  20   0   21.5g 338512  49920 S   1.3   4.2   0:51.39 node                                                                                                        
-      12480 codespa+  20   0   21.5g 350416  49792 S   0.7   4.3   1:21.56 node                                                                                                        
-       2862 codespa+  20   0 1248312  62416  42112 S   0.3   0.8   0:03.90 node 
+       PID USER       PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                                                                                     
+         1 codespa+   20   0    1136    640    640 S   0.0   0.0   0:00.13 docker-init                                                                                                 
+         7 codespa+   20   0    7236   1792   1792 S   0.0   0.0   0:00.02 sleep                                                                                                       
+        49 root       20   0   12196   3480   2560 S   0.0   0.0   0:00.00 sshd                                                                                                        
+      1279 codespa+   20   0    2616   1536   1536 S   0.0   0.0   0:00.00 sh                                                                                                          
+      1319 root       20   0    2616   1536   1536 S   0.0   0.0   0:00.00 sh                                                                                                          
+      1770 root       20   0 1983176  86152  52224 S   0.0   1.1   0:00.69 dockerd                                                                                                     
+      1808 root       20   0 1798832  48392  30592 S   0.0   0.6   0:00.45 containerd                                                                                                  
+      2226 codespa+   20   0    2624   1536   1536 S   0.0   0.0   0:00.00 sh                                                                                                          
+      2238 codespa+   20   0 1336404 114104  45440 S   0.0   1.4   0:17.03 node                                                                                                        
+      2386 codespa+   20   0 1240820  54012  41344 S   0.0   0.7   0:00.73 node                                                                                                        
+      2862 codespa+   20   0 1248956  62212  42112 S   0.0   0.8   0:04.30 node                                                                                                        
+      3814 codespa+   20   0    2616   1536   1536 S   0.0   0.0   0:00.00 sh                                                                                                          
+      3862 root       20   0    2616   1664   1664 S   0.0   0.0   0:00.00 sh                                                                                                          
+      4078 codespa+   20   0   16628  11520   3456 S   0.0   0.1   0:00.16 bash                                                                                                        
+      9777 codespa+   20   0    2616   1536   1536 S   0.0   0.0   0:00.01 sh                                                                                                          
+      9825 root       20   0    2616   1408   1408 S   0.0   0.0   0:00.00 sh                                                                                                          
+      10054 codespa+  20   0 1240308  54748  41216 S   0.0   0.7   0:00.59 node                                                                                                        
+      10071 codespa+  20   0   21.5g 339972  49920 S   0.0   4.2   0:57.13 node                                                                                                        
+      10107 codespa+  20   0  999712  60448  40576 S   0.0   0.7   0:00.46 node                                                                                                        
+      10213 codespa+  20   0    2616   1536   1536 S   0.0   0.0   0:00.00 sh                                                                                                          
+      10242 root      20   0    2616   1664   1664 S   0.0   0.0   0:00.00 sh                                                                                                          
+      12149 codespa+  20   0    2616   1408   1408 S   0.0   0.0   0:00.01 sh                                                                                                          
+      12193 root      20   0    2616   1536   1536 S   0.0   0.0   0:00.00 sh                                                                                                          
+      12480 codespa+  20   0   21.5g 343576  49792 S   0.0   4.2   1:33.48 node                                                                                                        
+      12505 codespa+  20   0 1241392  54576  40448 S   0.0   0.7   0:00.57 node                                                                                                        
+      12540 codespa+  20   0 1018796  85688  40832 S   0.0   1.1   0:11.62 node                                                                                                        
+      12691 codespa+  20   0    2616   1408   1408 S   0.0   0.0   0:00.00 sh                                                                                                          
+      12746 root      20   0    2616   1408   1408 S   0.0   0.0   0:00.00 sh                                                                                                          
+      47860 codespa+  20   0   10884   3712   3200 R   0.0   0.0   0:00.00 top 
     ```
 
 10. Run the command **uname -a**. ***(1 mark)***
@@ -350,13 +374,26 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
     @safmode ➜ /workspaces/OSProject (main) $ uname -a
     Linux codespaces-ea13b0 6.5.0-1021-azure #22~22.04.1-Ubuntu SMP Tue Apr 30 16:08:18 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
     ``` 
-11. What is the available free memory in the system. ***(1 mark)*** __Fill answer here__.
-12. What is the available disk space mounted on /workspace. ***(1 mark)*** __Fill answer here__.
-13. Name the version and hardware architecture of the linux Virtual environment. ***(1 mark)*** __Fill answer here__.
-14. What is the difference between **ls** vs **ls -asl**. ***(1 mark)*** __Fill answer here__.
-15. What is the TLB size of the Virtual CPU. ***(1 mark)*** __Fill answer here__.
-16. What is the CPU speed of the Virtual CPU. ***(1 mark)*** __Fill answer here__.
-17. What is the top running process that consumes the most CPU cycles. ***(1 mark)*** __Fill answer here__.
+11. What is the available free memory in the system. ***(1 mark)*** 
+    <br /> __482Mi__.
+
+12. What is the available disk space mounted on /workspace. ***(1 mark)*** 
+    <br /> __20770944__.
+
+13. Name the version and hardware architecture of the linux Virtual environment. ***(1 mark)*** 
+    <br /> __Linux codespaces-ea13b0 6.5.0-1021-azure #22~22.04.1-Ubuntu SMP Tue Apr 30 16:08:18 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux__.
+
+14. What is the difference between **ls** vs **ls -asl**. ***(1 mark)*** 
+    <br /> __The ls command lists files and directories in the current directory, while ls -asl lists all files and directories (-a for showing hidden ones), displays long format details like permissions and sizes (-l), and also shows the size in blocks for each entry (-s).__.
+
+15. What is the TLB size of the Virtual CPU. ***(1 mark)*** 
+    <br /> __2560 4K pages__.
+
+16. What is the CPU speed of the Virtual CPU. ***(1 mark)*** 
+    <br /> __3063.030__.
+
+17. What is the top running process that consumes the most CPU cycles. ***(1 mark)*** 
+    <br /> __top - 12:54:12 up  1:19,  0 users,  load average: 0.24, 0.24, 0.23__.
 
 ## Running your own container instance.
 
