@@ -85,13 +85,13 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
 
 1. Run the command **pwd** . ***(1 mark)*** 
 
-    ```
+    ```bash
     @safmode ➜ /workspaces/OSProject (main) $ pwd
     /workspaces/OSProject
     ```
 2. Run the command **cat /etc/passwd** . ***(1 mark)*** 
 
-    ```
+    ```bash
     @safmode ➜ /workspaces/OSProject (main) $ cat /etc/passwd
     root:x:0:0:root:/root:/bin/bash
     daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
@@ -122,7 +122,7 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
 
 3. Run the command **df** . ***(1 mark)***
 
-    ```
+    ```bash
     @safmode ➜ /workspaces/OSProject (main) $ df
     Filesystem     1K-blocks     Used Available Use% Mounted on
     overlay         32847680 10382636  20770944  34% /
@@ -134,7 +134,7 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
     ```
 4. Run the command **du** . ***(1 mark)***
 
-    ```
+    ```bash
     @safmode ➜ /workspaces/OSProject (main) $ du
     4       ./.git/lfs/tmp
     8       ./.git/lfs
@@ -244,13 +244,13 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
     ```
 5. Run the command **ls** . ***(1 mark)***
 
-    ```
+    ```bash
     @safmode ➜ /workspaces/OSProject (main) $ ls
     README.md  images
     ```
 6. Run the command **ls -asl** . ***(1 mark)***
 
-    ```
+    ```bash
     @safmode ➜ /workspaces/OSProject (main) $ ls -asl
     total 40
      4 drwxrwxrwx+ 4 codespace root  4096 Jun 20 12:00 .
@@ -261,7 +261,7 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
     ```
 7. Run the command **free -h** . ***(1 mark)***
 
-    ```
+    ```bash
     @safmode ➜ /workspaces/OSProject (main) $ free -h
                   total        used        free      shared  buff/cache   available
     Mem:          7.7Gi       2.0Gi       494Mi        68Mi       5.3Gi       5.4Gi
@@ -269,7 +269,7 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
     ```
 8. Run the command **cat /proc/cpuinfo** . ***(1 mark)***
 
-    ```
+    ```bash
     @safmode ➜ /workspaces/OSProject (main) $ cat /proc/cpuinfo
     processor       : 0
     vendor_id       : AuthenticAMD
@@ -329,7 +329,7 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
     ```
 9. Run the command **top** and type **q** to quit. ***(1 mark)***
 
-    ```
+    ```bash
     top - 12:54:12 up  1:19,  0 users,  load average: 0.24, 0.24, 0.23
     Tasks:  29 total,   1 running,  28 sleeping,   0 stopped,   0 zombie
     %Cpu(s): 14.3 us,  3.6 sy,  0.0 ni, 82.1 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
@@ -370,7 +370,7 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
 
 10. Run the command **uname -a**. ***(1 mark)***
 
-    ```
+    ```bash
     @safmode ➜ /workspaces/OSProject (main) $ uname -a
     Linux codespaces-ea13b0 6.5.0-1021-azure #22~22.04.1-Ubuntu SMP Tue Apr 30 16:08:18 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
     ``` 
