@@ -399,7 +399,7 @@ Look at the TERMINAL tab. Run the following commands and provide the output here
 
 1. At the terminal, run a linux instance. By typing the following command. 
 ```
-docker pull debian
+docker pull debian 
 docker run --detach -it debian
 ```
 2. This will run the debian container. To check if the debian container is running, type
