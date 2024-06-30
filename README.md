@@ -568,11 +568,34 @@ docker run -itd --net rednet --name c2 busybox sh
 ```
 ***Questions:***
 
-1. Describe what is busybox and what is command switch **--name** is for? . ***(2 mark)*** __Fill answer here__.
-2. Explore the network using the command ```docker network ls```, show the output of your terminal. ***(1 mark)*** __Fill answer here__.
-3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)*** __Fill answer here__.
-4. What is the network address for the running container c1 and c2? ***(1 mark)*** __Fill answer here__.
-5. Using the command ```docker exec c1 ping c2```, which basically tries to do a ping from container c1 to c2. Are you able to ping? Show your output . ***(1 mark)*** __Fill answer here__.
+1. Describe what is busybox and what is command switch **--name** is for? . ***(2 mark)***
+
+BusyBox is a lightweight software suite that combines many common UNIX utilities into a single small executable. It's often used in containers for its simplicity and minimal resource requirements.
+
+--name: The --name flag in the docker run command assigns a specific name to a container, making it easier to reference and manage the container.
+
+
+2. Explore the network using the command ```docker network ls```, show the output of your terminal. ***(1 mark)*** 
+
+<img src = "docker network ls.png" width="70%">
+
+3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)*** 
+
+bluenet: 172.20.0.1
+
+rednet: 172.21.0.1
+
+4. What is the network address for the running container c1 and c2? ***(1 mark)*** 
+
+c1: 172.20.0.2
+
+c2: 172.21.0.2
+
+5. Using the command ```docker exec c1 ping c2```, which basically tries to do a ping from container c1 to c2. Are you able to ping? Show your output . ***(1 mark)*** 
+
+No,
+
+<img src="badd adress.png" width="70%">
 
 ## Bridging two SUB Networks
 1. Let's try this again by creating a network to bridge the two containers in the two subnetworks
@@ -584,8 +607,18 @@ docker exec c1 ping c2
 ```
 ***Questions:***
 
-1. Are you able to ping? Show your output . ***(1 mark)*** __Fill answer here__.
-2. What is different from the previous ping in the section above? ***(1 mark)*** __Fill answer here__.
+1. Are you able to ping? Show your output . ***(1 mark)*** 
+
+Yes,
+
+<img src="ping.png" width="70%">
+
+2. What is different from the previous ping in the section above? ***(1 mark)***
+
+In previous attempt, it failed because c1 and c2 is on different network, which are rednet and bluenet. That is why bad address ping error shows up.
+
+In this attempt, c1 and c2 are connected to same network which is bridgenet so they can communicate with each other. So upon pinging, no error occurs.
+
 
 ## Intermediate Level (10 marks bonus)
 
