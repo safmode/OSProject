@@ -778,7 +778,7 @@ You have now set up a Node.js application in a Docker container on nodejsnet net
     
     __Connecting both containers__
 
-    __1. We have to create a bridge network, to connect both containers. We use the below command.__
+    __1. We have to create a bridge network, to connect both containers. We use the below command:__
     ```bash
     @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ docker network create mybridge
     ```
@@ -789,16 +789,16 @@ You have now set up a Node.js application in a Docker container on nodejsnet net
     @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ docker network connect mybridge nodejs-container
     ```
 
-    __At this stage, the instructions in step 5 should have work but in my case, there is an authentication issue between the Node.js MySQL client and the MySQL server. Hence, the steps below shows on how to fix the issue:__
+    At this stage, the instructions in step 5 should have work but in my case, there is an authentication issue between the Node.js MySQL client and the MySQL server. Hence, the steps below shows on how to fix the issue:
 
     __Fixing authentication issues between the Node.js MySQL client and the MySQL server__
 
     __1. Firstly, we need to update the authentication method for the MySQL user:__
     ```bash
-        @safmode ➜ /workspaces/OSProject (main) $ docker exec -it mysql-container mysql -uroot -p
-        Enter password:
-    ```
-    __Enter the root password once prompted.__
+    @safmode ➜ /workspaces/OSProject (main) $ docker exec -it mysql-container mysql -uroot -p
+    Enter password:
+    ``` 
+    Enter the root password once prompted.
 
     __2. Run the following commands after connected to MySQL:__
     ```bash
@@ -808,7 +808,7 @@ You have now set up a Node.js application in a Docker container on nodejsnet net
     mysql> flush privileges;
     Query OK, 0 rows affected (0.02 sec)
     ```
-    __3. Now, we need to update the Node.js application to use mysql2 instead of mysql, as it has better support for cachind_sha2_password. In your Node.js project directory:__
+    __3. Now, we need to update the Node.js application to use mysql2 instead of mysql, as it has better support for caching_sha2_password. In the node.js-app directory, type the below commands:__
     ```bash
     @safmode ➜ /workspaces/OSProject (main) $ cd nodejs-app
     @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ npm uninstall mysql
@@ -894,7 +894,7 @@ You have now set up a Node.js application in a Docker container on nodejsnet net
     @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ curl http://localhost:3000/random
     {"id":1,"name":"example1","value":"value1"}
     ```
-    __The connection is established!__
+    __Alhamdulillah, we can access the node.js application!__
 
 ## What to submit
 
