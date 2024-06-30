@@ -591,6 +591,10 @@ c1: 172.20.0.2
 
 c2: 172.21.0.2
 
+<img src="bluenet.png" width="70%">
+
+<img src="rednet.png" width="70%">
+
 5. Using the command ```docker exec c1 ping c2```, which basically tries to do a ping from container c1 to c2. Are you able to ping? Show your output . ***(1 mark)*** 
 
 No,
