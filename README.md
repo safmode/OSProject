@@ -765,14 +765,140 @@ You have now set up a Node.js application in a Docker container on nodejsnet net
 
 ***Questions:***
 
-1. What is the output of step 5 above, explain the error? ***(1 mark)*** __Fill answer here__.
-2. Show the instruction needed to make this work. ***(1 mark)*** __Fill answer here__.
+1. What is the output of step 5 above, explain the error? ***(1 mark)*** 
+    ```bash
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ curl http://localhost:3000/random
+    Server Error
+    ```
+     __The error is because the Node.js container and MySQL container are on different docker networks, so they can't communicate with each other. Another possible issue was that I encounter an authentication issue between the Node.js MySQL client and the MySQL server. I found out that this is a common issue when using a newer version of MySQL(8.0+) with older MySQL clients.__
 
 
+
+2. Show the instruction needed to make this work. ***(1 mark)***
+    
+    __Connecting both containers__
+
+    __1. We have to create a bridge network, to connect both containers. We use the below command.__
+    ```bash
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ docker network create mybridge
+    ```
+
+    __2. Then, connect both containers to the new network.__
+    ```bash
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ docker network connect mybridge mysql-container
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ docker network connect mybridge nodejs-container
+    ```
+
+    __At this stage, the instructions in step 5 should have work but in my case, there is an authentication issue between the Node.js MySQL client and the MySQL server. Hence, the steps below shows on how to fix the issue:__
+
+    __Fixing authentication issues between the Node.js MySQL client and the MySQL server__
+
+    __1. Firstly, we need to update the authentication method for the MySQL user:__
+    ```bash
+        @safmode ➜ /workspaces/OSProject (main) $ docker exec -it mysql-container mysql -uroot -p
+        Enter password:
+    ```
+    __Enter the root password once prompted.__
+
+    __2. Run the following commands after connected to MySQL:__
+    ```bash
+    mysql> alter user 'myuser'@'%' identified with caching_sha2_password by 'mypassword';
+    Query OK, 0 rows affected (0.02 sec)
+
+    mysql> flush privileges;
+    Query OK, 0 rows affected (0.02 sec)
+    ```
+    __3. Now, we need to update the Node.js application to use mysql2 instead of mysql, as it has better support for cachind_sha2_password. In your Node.js project directory:__
+    ```bash
+    @safmode ➜ /workspaces/OSProject (main) $ cd nodejs-app
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ npm uninstall mysql
+
+    removed 12 packages, and audited 65 packages in 650ms
+
+    12 packages are looking for funding
+    run `npm fund` for details
+
+    found 0 vulnerabilities
+
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ npm install mysql2
+
+    added 11 packages, and audited 76 packages in 717ms
+
+    12 packages are looking for funding
+    run `npm fund` for details
+
+    found 0 vulnerabilities
+    ```
+
+    __4. In the index.js file, modify the connection setup like this by using the command 'nano index.js':__
+    ```bash
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ nano index.js file 
+    ```
+
+    In the index.js file, update the file as shown below:
+    ```bash
+    const connection = mysql.createConnection({
+    host: 'mysql-container',
+    user: 'myuser',
+    password: 'mypassword',
+    database: 'mydatabase',
+    ssl: {
+        rejectUnauthorized: false
+    }
+    });
+
+    connection.connect((err) => {
+    if (err) {
+        console.error('Error connecting to MySQL:', err);
+        return;
+    }
+    console.log('Connected to MySQL');
+    });
+    ```
+
+    __5. Rebuild the Node.js Docker image:__
+    ```bash
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ docker build -t nodejs-app .
+    [+] Building 11.4s (11/11) FINISHED             docker:default
+    => [internal] load build definition from Dockerfile      0.0s
+    => => transferring dockerfile: 407B                      0.0s
+    => [internal] load metadata for docker.io/library/node:  1.6s
+    => [auth] library/node:pull token for registry-1.docker  0.0s
+    => [internal] load .dockerignore                         0.1s
+    => => transferring context: 2B                           0.0s
+    => [1/5] FROM docker.io/library/node:14@sha256:a158d3b9  0.0s
+    => [internal] load build context                         0.2s
+    => => transferring context: 2.17MB                       0.1s
+    => CACHED [2/5] WORKDIR /usr/src/app                     0.0s
+    => [3/5] COPY package*.json ./                           0.2s
+    => [4/5] RUN npm install                                 5.0s
+    => [5/5] COPY . .                                        0.4s
+    => exporting to image                                    3.6s
+    => => exporting layers                                   3.5s
+    => => writing image sha256:feaf3d5a93f0e65cb9f181fd76b9  0.0s
+    => => naming to docker.io/library/nodejs-app             0.0s
+    ```
+
+    __6. Stop and remove the old Node.js container, then start a new one:__
+    ```bash
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ docker stop nodejs-container
+    nodejs-container
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ docker rm nodejs-container
+    nodejs-container
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ docker run --name nodejs-container --network mybridge -p 3000:3000 -d nodejs-app
+    efde298aedd0680c48145e09f1fce6c0183b65849540da46df8889658c1229b1
+    ```
+
+    __7. Check the connection__
+    ```bash
+    @safmode ➜ /workspaces/OSProject/nodejs-app (main) $ curl http://localhost:3000/random
+    {"id":1,"name":"example1","value":"value1"}
+    ```
+    __The connection is established!__
 
 ## What to submit
 
 1. Make sure to commit all changes on your source control, and make sure your source control is sync to the repository. 
 2. Check your repository link, to see if all the files and answers are included in the repository. 
 3. Submit through italeem, by providing the link to your repository.
-4. Due by ***AS STATED IN ITALEEM SYSTEM***
+4. Due by ***1 JULY 2024, MONDAY, 11:59PM***
